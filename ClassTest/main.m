@@ -27,6 +27,9 @@ int main(int argc, const char * argv[]) {
         NSLog(@"MetaClassClass %@: %p", metaKlassKlass, metaKlassKlass);
         Class metaKlassKlassKlass = getKlass(metaKlassKlass);
         NSLog(@"MetaClassClassClass %@: %p", metaKlassKlassKlass, metaKlassKlassKlass);
+
+        NSLog(@"NSObject %@: %p", [NSObject class], [NSObject class]);
+        NSLog(@"NSObjectMetaClass %@: %p", getKlass([NSObject class]), getKlass([NSObject class]));
     }
     return 0;
 }
