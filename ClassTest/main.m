@@ -11,7 +11,7 @@
 #import "Foo.h"
 
 Class getKlass(id object) {
-    uintptr_t *isa = (__bridge void *)object;
+    uintptr_t *isa = (uintptr_t *)object;
     return (Class)((*isa) & 0x00007ffffffffff8);
 }
 
@@ -30,6 +30,7 @@ int main(int argc, const char * argv[]) {
 
         NSLog(@"NSObject %@: %p", [NSObject class], [NSObject class]);
         NSLog(@"NSObjectMetaClass %@: %p", getKlass([NSObject class]), getKlass([NSObject class]));
+        NSLog(@"NSObjectMetaClassClass %@: %p", getKlass(getKlass([NSObject class])), getKlass(getKlass([NSObject class])));
     }
     return 0;
 }
